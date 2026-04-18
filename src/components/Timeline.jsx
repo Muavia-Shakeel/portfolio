@@ -8,76 +8,64 @@ function TimelineEntry({ entry, index, isLast }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -24 }}
+      initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.12 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
       className="relative flex gap-6"
     >
       {/* Icon + line column */}
       <div className="flex flex-col items-center flex-shrink-0">
         {/* Icon */}
         <motion.div
-          whileInView={{ scale: [0.7, 1.1, 1] }}
+          whileInView={{ scale: [0.8, 1] }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.12 + 0.2 }}
-          className={`relative w-11 h-11 rounded-full border-2 flex items-center justify-center z-10 ${
+          transition={{ duration: 0.4, delay: index * 0.08 + 0.1 }}
+          className={`relative w-11 h-11 rounded-xl border-2 flex items-center justify-center z-10 ${
             isEducation
-              ? 'border-cyan-400 bg-cyan-400/10 text-cyan-400'
-              : 'border-electric bg-electric/10 text-electric'
+              ? 'border-primary/30 bg-primary/10 text-primary'
+              : 'border-accent/30 bg-accent/10 text-accent'
           }`}
         >
-          {/* Pulse ring */}
-          <span
-            className={`absolute inset-0 rounded-full animate-ping opacity-20 ${
-              isEducation ? 'bg-cyan-400' : 'bg-electric'
-            }`}
-            style={{ animationDuration: '3s' }}
-          />
           {isEducation ? <GraduationCap size={18} /> : <Briefcase size={18} />}
         </motion.div>
 
-        {/* Glowing connector line */}
+        {/* Connector line */}
         {!isLast && (
-          <div className="w-px flex-1 mt-3 min-h-[80px] relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-electric/30 via-electric/10 to-transparent" />
-          </div>
+          <div className="w-0.5 flex-1 mt-3 min-h-[80px] bg-slate-800/30" />
         )}
       </div>
 
       {/* Card */}
       <div className="pb-10 flex-1 min-w-0">
         <motion.div
-          whileHover={{ y: -2, transition: { duration: 0.2 } }}
-          className="group rounded-2xl p-6 glass-hover overflow-hidden relative"
+          className="group glass-card p-6 hover:border-accent/30 transition-all duration-300"
         >
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
           {/* Period badge */}
           <span
-            className={`inline-block font-mono text-xs px-3 py-1.5 rounded-full mb-4 ${
+            className={`inline-block text-xs px-3 py-1.5 mb-4 rounded-md font-medium ${
               isEducation
-                ? 'text-cyan-400/80 bg-cyan-400/10 border border-cyan-400/20'
-                : 'text-electric/80 bg-electric/10 border border-electric/20'
+                ? 'text-primary bg-primary/10 border border-primary/20'
+                : 'text-accent bg-accent/10 border border-accent/20'
             }`}
           >
             {entry.period}
           </span>
 
-          <h3 className="font-display font-semibold text-xl text-white mb-0.5 group-hover:text-electric transition-colors duration-300">
+          <h3 className="font-display font-semibold text-lg text-white mb-1 group-hover:text-accent transition-colors duration-300">
             {entry.role}
           </h3>
-          <p className="font-body text-sm font-medium text-slate-400 mb-5">
-            @ {entry.company}
+          <p className="text-sm text-slate-400 mb-5">
+            {entry.company}
           </p>
 
           {/* Bullet points */}
-          <ul className="flex flex-col gap-2.5">
+          <ul className="flex flex-col gap-3">
             {entry.bullets.map((bullet, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm text-slate-400 leading-relaxed">
+              <li key={i} className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed">
                 <CheckCircle2
                   size={14}
-                  className={`flex-shrink-0 mt-0.5 ${isEducation ? 'text-cyan-400/60' : 'text-electric/60'}`}
+                  className={`flex-shrink-0 mt-0.5 ${isEducation ? 'text-primary/60' : 'text-accent/60'}`}
                 />
                 {bullet}
               </li>
@@ -91,11 +79,11 @@ function TimelineEntry({ entry, index, isLast }) {
 
 export default function Timeline() {
   return (
-    <section id="experience" className="py-28 px-6 lg:px-8 max-w-4xl mx-auto">
+    <section id="experience" className="py-28 px-6 lg:px-8 max-w-5xl mx-auto">
       <SectionHeader
         eyebrow="// journey"
-        title="Experience"
-        subtitle="My path from intern to AI/ML Engineer, alongside ongoing graduate research."
+        title="Experience & Education"
+        subtitle="From intern to AI/ML Engineer — work history and academic background."
       />
 
       <div className="relative">

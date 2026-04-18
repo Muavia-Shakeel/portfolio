@@ -5,12 +5,12 @@ import SectionHeader from './SectionHeader'
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 }
 
 const item = {
-  hidden: { opacity: 0, y: 36 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 }
 
 function ProjectCard({ project }) {
@@ -19,26 +19,22 @@ function ProjectCard({ project }) {
   return (
     <motion.div
       variants={item}
-      whileHover={{ y: -4, transition: { duration: 0.25 } }}
-      className="group relative flex flex-col gap-4 rounded-2xl p-6 glass-hover cursor-default overflow-hidden"
+      className="group flex flex-col gap-4 glass-card p-6"
     >
-      {/* Top shimmer accent on hover */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      {/* Card top row */}
-      <div className="flex items-start justify-between gap-3">
-        <span className="project-number select-none">{num}</span>
+      {/* Top row */}
+      <div className="flex items-center justify-between gap-3">
+        <span className="project-number">{num}</span>
         <a
           href={project.link}
-          className="flex-shrink-0 p-1.5 text-slate-700 hover:text-electric rounded-lg hover:bg-electric/10 transition-all duration-200"
+          className="p-1.5 text-slate-700 hover:text-accent transition-colors duration-150"
           aria-label={`View ${project.title}`}
         >
-          <ExternalLink size={15} />
+          <ExternalLink size={13} />
         </a>
       </div>
 
       {/* Title */}
-      <h3 className="font-display font-semibold text-lg text-white leading-snug group-hover:text-electric transition-colors duration-300 -mt-1">
+      <h3 className="font-display font-bold text-base text-white leading-snug group-hover:text-accent transition-colors duration-200">
         {project.title}
       </h3>
 
@@ -48,14 +44,9 @@ function ProjectCard({ project }) {
       </p>
 
       {/* Tech stack */}
-      <div className="flex flex-wrap gap-2 pt-3 border-t border-white/[0.06]">
+      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800">
         {project.tech.map((t) => (
-          <span
-            key={t}
-            className="font-mono text-[11px] text-electric/75 bg-electric/8 border border-electric/15 px-2.5 py-1 rounded-md group-hover:border-electric/30 group-hover:text-electric transition-all duration-300"
-          >
-            {t}
-          </span>
+          <span key={t} className="tech-label">{t}</span>
         ))}
       </div>
     </motion.div>

@@ -19,3 +19,6 @@ Thumbs.db
 
 # Vite
 *.local
+
+# Resume (keep out of public repo)
+Resume-3.pdf

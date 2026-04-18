@@ -1,51 +1,51 @@
 export const projects = [
   {
     id: 1,
-    title: 'Hybrid OCR Engine',
+    title: 'Visual-AI — Enterprise CV & Video Analytics',
     description:
-      'Production OCR pipeline combining YOLOv8-based text region detection with a custom CRNN recognition model. Processes 500+ noisy industrial documents daily — gate passes, delivery challans, weight slips — with 96% accuracy on low-contrast thermal prints.',
-    tech: ['YOLOv8', 'PyTorch', 'OpenCV', 'Python', 'FastAPI'],
-    link: '#',
+      'Real-time GPU-accelerated video surveillance platform built on NVIDIA DeepStream 7.1. Ingests live RTSP feeds and runs parallel deep learning pipelines: people & vehicle counting via virtual tripwires, vehicle speed detection using 4-point perspective transform, ArcFace facial recognition against a FAISS employee index, and ANPR with consensus voting. Camera streams are managed dynamically from Oracle DB — added or removed without pipeline restart. Watchdog with exponential backoff handles frozen streams; email alerts on critical failures.',
+    tech: ['DeepStream 7.1', 'YOLOv8s', 'TensorRT FP16', 'FAISS', 'ArcFace', 'Oracle DB', 'GStreamer', 'Python'],
+    link: 'https://github.com/muavia-shakeel',
   },
   {
     id: 2,
-    title: 'Real-Time ANPR System',
+    title: 'KTML WhatsApp ERP Bot',
     description:
-      'GPU-accelerated Automatic Number Plate Recognition processing 4 camera streams simultaneously at 30 FPS. Built on NVIDIA DeepStream with TensorRT-optimized detection and recognition models. Integrated with Oracle ERP for automated vehicle logging and gate management.',
-    tech: ['DeepStream', 'TensorRT', 'CUDA', 'Python', 'Oracle DB'],
-    link: '#',
+      'Production agentic AI assistant for a textile ERP. Staff send natural-language messages (English or Urdu) on WhatsApp — the bot creates, confirms, posts, and reports on yarn pre-bookings wired into Oracle DB. v2 replaced a 1,500-line regex state machine with a Gemini function-calling loop and 13 tools, cutting code ~60% while adding more capabilities. Security: HMAC-SHA256 webhook auth, RBAC for 3 roles, parameterized queries on all writes, SELECT-only analytics with DDL/DML blocklist, and rate limiting.',
+    tech: ['Python', 'Flask', 'Gemini', 'Oracle DB', 'Node.js', 'rapidfuzz', 'HMAC-SHA256'],
+    link: 'https://github.com/muavia-shakeel',
   },
   {
     id: 3,
-    title: 'AI-Powered Visual Monitoring',
+    title: 'IDE-PASS SDK — AI ID Card Scanner',
     description:
-      'Intelligent factory monitoring system with real-time object detection, zone intrusion alerts, and anomaly flagging. Processes 8+ camera feeds on a single NVIDIA GPU with <100ms latency. Automated alert system via WhatsApp and email.',
-    tech: ['YOLOv8', 'OpenCV', 'FastAPI', 'PostgreSQL', 'WebSockets'],
-    link: '#',
+      'End-to-end intelligent document processing pipeline for Pakistani identity documents (CNIC, Driving License, Passport). Captures cards via hardware SDK, classifies with a custom YOLOv8 model, and routes through a multi-engine OCR stack — Google Cloud Vision for accuracy, EasyOCR as fallback. Auto-detects document type, extracts structured fields, and handles bilingual text: Urdu names are transliterated to English via Groq LLM. Packaged as a distributable Windows .exe via PyInstaller; dual-process architecture (32-bit capture + 64-bit AI) communicates over REST.',
+    tech: ['YOLOv8', 'Google Cloud Vision', 'EasyOCR', 'Groq LLM', 'Flask', 'Oracle DB', 'PyInstaller', 'Docker'],
+    link: 'https://github.com/muavia-shakeel',
   },
   {
     id: 4,
-    title: 'Oracle ERP AI Integration',
+    title: 'Hand Gesture Mouse Control',
     description:
-      'Custom middleware layer connecting AI inference engines with Oracle E-Business Suite. Automates inventory classification, demand forecasting inputs, and quality control decisions directly within ERP transactions using PL/SQL stored procedures and Python REST APIs.',
-    tech: ['Python', 'PL/SQL', 'Oracle DB', 'REST APIs', 'Docker'],
-    link: '#',
+      'Control your mouse cursor and clicks using hand gestures detected in real-time via webcam. Built with MediaPipe Hands and PyAutoGUI. Maps finger positions to cursor movement, left click, right click, and scroll gestures.',
+    tech: ['MediaPipe', 'OpenCV', 'PyAutoGUI', 'Python', 'NumPy'],
+    link: 'https://github.com/muavia-shakeel',
   },
   {
     id: 5,
-    title: 'Textile Defect Detection',
+    title: 'Sentiment Analysis Dashboard',
     description:
-      'CNN-based visual inspection system deployed on production lines, detecting fabric defects (holes, stains, weaving faults) in real-time. Reduced manual inspection overhead by 80% and improved defect catch rate to 94%. Trained on 15,000+ annotated defect images.',
-    tech: ['PyTorch', 'CNN', 'OpenCV', 'TensorRT', 'ONNX'],
-    link: '#',
+      'Paste any text or bulk-load a CSV and get sentiment scores (positive / neutral / negative) via a fine-tuned DistilBERT model. React frontend with live charts showing sentiment distribution and confidence breakdown.',
+    tech: ['Transformers', 'FastAPI', 'React', 'Recharts', 'Python'],
+    link: 'https://github.com/muavia-shakeel',
   },
   {
     id: 6,
-    title: 'Intelligent Document Processor',
+    title: 'License Plate OCR',
     description:
-      'Layout-aware document AI system using LayoutLMv3 for extracting structured data from unstructured industrial documents. Handles invoices, purchase orders, and compliance forms with field-level extraction accuracy of 92%.',
-    tech: ['LayoutLMv3', 'Transformers', 'FastAPI', 'Docker', 'PostgreSQL'],
-    link: '#',
+      'Detects and reads vehicle number plates from images or live webcam feed. YOLOv8 localizes the plate region, EasyOCR extracts the text. Logs results with timestamps to a SQLite database and exposes a REST API for integrations.',
+    tech: ['YOLOv8', 'EasyOCR', 'OpenCV', 'SQLite', 'FastAPI'],
+    link: 'https://github.com/muavia-shakeel',
   },
 ]
 
@@ -86,6 +86,24 @@ export const skills = [
     note: 'Pushing boundaries in document AI',
     items: ['Transformers', 'LayoutLM', 'GANs', 'Attention Mechanisms', 'CRNN'],
   },
+  {
+    category: 'Web Development',
+    icon: 'globe',
+    note: 'Building interfaces and APIs',
+    items: ['React', 'TypeScript', 'HTML/CSS', 'Tailwind CSS', 'Vite'],
+  },
+  {
+    category: 'Data Science',
+    icon: 'chart',
+    note: 'Data wrangling, analysis, and visualization',
+    items: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter'],
+  },
+  {
+    category: 'Cloud & Tools',
+    icon: 'cloud',
+    note: 'Cloud platforms and developer productivity',
+    items: ['AWS Basics', 'Google Colab', 'HuggingFace Hub', 'GitHub Actions', 'Notion'],
+  },
 ]
 
 export const experience = [
@@ -117,42 +135,98 @@ export const experience = [
   },
   {
     id: 3,
-    role: 'AI/ML Intern',
-    company: 'Kohinoor Textile Mills',
-    period: '2022 – 2023',
+    role: 'Machine Learning Engineer (Remote)',
+    company: 'Hazara University',
+    period: '2023 – 2024',
     type: 'work',
     bullets: [
-      'Developed initial prototypes for OCR and object detection systems',
-      'Established the AI/ML pipeline architecture still in production today',
-      'First exposure to deploying models on NVIDIA GPU-accelerated hardware',
-      'Built data collection and annotation workflows for industrial datasets',
+      'Developed and optimized ML models for anomaly detection, predictive analysis, and classification — 95%+ accuracy',
+      'Automated data preprocessing pipelines, reducing processing time by 50%',
+      'Implemented real-time anomaly detection using Isolation Forests (silhouette coefficient: 0.86)',
+      'Worked on Generative AI systems (GPT, LLaMA, RAG) for document retrieval and chatbot development',
+    ],
+  },
+  {
+    id: 4,
+    role: 'Python Developer Intern',
+    company: 'Kohinoor Textile Mills',
+    period: '2023',
+    type: 'work',
+    bullets: [
+      'Built Python automation scripts for production data analysis, improving efficiency by 30%',
+      'Integrated SQL databases for real-time inventory tracking and reporting',
+      'Assisted in backend development with Flask & FastAPI to create RESTful APIs',
+      'Built a data analytics dashboard to visualize operational trends and insights',
+    ],
+  },
+  {
+    id: 5,
+    role: 'Bachelor\'s in Artificial Intelligence',
+    company: 'Hazara University',
+    period: '2020 – 2024',
+    type: 'education',
+    bullets: [
+      'CGPA: 3.07 / 4.00',
+      'Coursework: Machine Learning, Deep Learning, Computer Vision, NLP, Database Systems, Software Engineering',
+      'Final Year Project: AI-based malware detection system achieving 90% accuracy with 20% fewer false positives',
     ],
   },
 ]
 
-export const research = [
+export const researchAreas = [
   {
     id: 1,
-    title: 'Hybrid Attention Mechanisms for Industrial OCR',
+    icon: 'eye',
+    title: 'Computer Vision',
     description:
-      'Exploring spatial and channel attention architectures to improve OCR accuracy on degraded industrial document scans. Combines domain-specific pre-training with attention-guided region focusing.',
-    status: 'In Progress',
-    statusColor: 'yellow',
+      'Object detection, defect localization, and visual inspection systems for industrial environments. Focus on real-time inference under production constraints with YOLO variants and transformer-based detectors.',
+    tags: ['Object Detection', 'YOLO', 'RT-DETR', 'Defect Inspection'],
   },
   {
     id: 2,
-    title: 'Real-Time Defect Detection in Textile Manufacturing using YOLO Variants',
+    icon: 'rag',
+    title: 'Agentic AI',
     description:
-      'Comparative evaluation of YOLOv5, YOLOv8, and RT-DETR for automated fabric inspection under real production constraints including variable lighting, speed, and defect types.',
-    status: 'Under Review',
-    statusColor: 'orange',
+      'Designing autonomous multi-step AI systems that use tools, memory, and planning to complete complex tasks. Exploring function-calling loops, tool-use orchestration, and agentic architectures for enterprise automation.',
+    tags: ['LLM Agents', 'Tool Use', 'Function Calling', 'Gemini', 'LangChain'],
   },
   {
     id: 3,
-    title: 'ERP-Integrated AI Decision Systems: A Framework',
+    icon: 'rag',
+    title: 'Retrieval-Augmented Generation',
     description:
-      'Proposes an architecture for embedding low-latency ML inference into enterprise resource planning transaction flows. Validated on Oracle EBS with inventory and QC automation use cases.',
-    status: 'Published',
-    statusColor: 'green',
+      'Grounding LLMs with external knowledge sources for enterprise Q\u0026A, document retrieval, and ERP query systems. Exploring hybrid dense-sparse retrieval and re-ranking strategies.',
+    tags: ['RAG', 'FAISS', 'LangChain', 'Vector Search', 'LLMs'],
+  },
+  {
+    id: 4,
+    icon: 'xai',
+    title: 'Explainable AI (XAI)',
+    description:
+      'Making black-box models interpretable for industrial stakeholders. Applying SHAP, LIME, and Grad-CAM to explain predictions in defect detection and anomaly classification systems.',
+    tags: ['SHAP', 'LIME', 'Grad-CAM', 'Model Interpretability'],
+  },
+  {
+    id: 5,
+    icon: 'rl',
+    title: 'Reinforcement Learning',
+    description:
+      'Exploring policy-based optimization for sequential decision problems in manufacturing — adaptive inspection routing, resource scheduling, and closed-loop quality control feedback.',
+    tags: ['RL', 'Policy Optimization', 'Decision Systems', 'Automation'],
+  },
+  {
+    id: 6,
+    icon: 'integration',
+    title: 'AI-ERP Integration',
+    description:
+      'Embedding low-latency ML inference into enterprise resource planning workflows. Architectures for real-time AI decision support within Oracle EBS transaction flows.',
+    tags: ['Oracle EBS', 'Real-time AI', 'ERP Automation', 'PL/SQL'],
+  },
+]
+
+export const publications = [
+  {
+    id: 1,
+    status: 'coming_soon',
   },
 ]
