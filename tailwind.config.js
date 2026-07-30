@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -11,6 +12,7 @@ export default {
         surface: '#131315',
         'surface-2': '#1a1a1d',
         border: '#252528',
+        canvas: '#f7f5f0',
         lime: {
           DEFAULT: '#b6ff4a',
           dark: '#9de032',
@@ -34,11 +36,13 @@ export default {
           DEFAULT: '#b6ff4a',
           dark: '#9de032',
           light: '#ccff7a',
+          ink: '#4d7a1a',
         },
         primary: {
           DEFAULT: '#b6ff4a',
           dark: '#9de032',
           light: '#ccff7a',
+          ink: '#4d7a1a',
         },
       },
       fontFamily: {

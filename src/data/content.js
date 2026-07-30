@@ -1,18 +1,18 @@
 export const projects = [
   {
     id: 1,
-    title: 'Visual-AI — Enterprise CV & Video Analytics',
-    description:
-      'Real-time GPU-accelerated video surveillance platform built on NVIDIA DeepStream 7.1. Ingests live RTSP feeds and runs parallel deep learning pipelines: people & vehicle counting via virtual tripwires, vehicle speed detection using 4-point perspective transform, ArcFace facial recognition against a FAISS employee index, and ANPR with consensus voting. Camera streams are managed dynamically from Oracle DB — added or removed without pipeline restart. Watchdog with exponential backoff handles frozen streams; email alerts on critical failures.',
-    tech: ['DeepStream 7.1', 'YOLOv8s', 'TensorRT FP16', 'FAISS', 'ArcFace', 'Oracle DB', 'GStreamer', 'Python'],
-    link: 'https://github.com/muavia-shakeel',
-  },
-  {
-    id: 2,
     title: 'KTML WhatsApp ERP Bot',
     description:
       'Production agentic AI assistant for a textile ERP. Staff send natural-language messages (English or Urdu) on WhatsApp — the bot creates, confirms, posts, and reports on yarn pre-bookings wired into Oracle DB. v2 replaced a 1,500-line regex state machine with a Gemini function-calling loop and 13 tools, cutting code ~60% while adding more capabilities. Security: HMAC-SHA256 webhook auth, RBAC for 3 roles, parameterized queries on all writes, SELECT-only analytics with DDL/DML blocklist, and rate limiting.',
     tech: ['Python', 'Flask', 'Gemini', 'Oracle DB', 'Node.js', 'rapidfuzz', 'HMAC-SHA256'],
+    link: 'https://github.com/muavia-shakeel',
+  },
+  {
+    id: 2,
+    title: 'Visual-AI — Enterprise CV & Video Analytics',
+    description:
+      'Real-time GPU-accelerated video surveillance platform built on NVIDIA DeepStream 7.1. Ingests live RTSP feeds and runs parallel deep learning pipelines: people & vehicle counting via virtual tripwires, vehicle speed detection using 4-point perspective transform, ArcFace facial recognition against a FAISS employee index, and ANPR with consensus voting. Camera streams are managed dynamically from Oracle DB — added or removed without pipeline restart. Watchdog with exponential backoff handles frozen streams; email alerts on critical failures.',
+    tech: ['DeepStream 7.1', 'YOLOv8s', 'TensorRT FP16', 'FAISS', 'ArcFace', 'Oracle DB', 'GStreamer', 'Python'],
     link: 'https://github.com/muavia-shakeel',
   },
   {
@@ -25,27 +25,24 @@ export const projects = [
   },
   {
     id: 4,
-    title: 'Hand Gesture Mouse Control',
+    title: 'Enterprise RAG Knowledge Assistant',
     description:
-      'Control your mouse cursor and clicks using hand gestures detected in real-time via webcam. Built with MediaPipe Hands and PyAutoGUI. Maps finger positions to cursor movement, left click, right click, and scroll gestures.',
-    tech: ['MediaPipe', 'OpenCV', 'PyAutoGUI', 'Python', 'NumPy'],
-    link: 'https://github.com/muavia-shakeel',
+      'Self-directed project: a retrieval-augmented chat assistant over a private document set, with per-document access control so users only retrieve chunks they are authorized to see. Dense retrieval over a FAISS index, LLM-generated answers grounded in retrieved passages with inline citations, and a role-based filter applied before retrieval rather than after generation.',
+    tech: ['LangChain', 'FAISS', 'Gemini', 'FastAPI', 'Python'],
   },
   {
     id: 5,
-    title: 'Sentiment Analysis Dashboard',
+    title: 'Multi-Agent Research & Automation Workflow',
     description:
-      'Paste any text or bulk-load a CSV and get sentiment scores (positive / neutral / negative) via a fine-tuned DistilBERT model. React frontend with live charts showing sentiment distribution and confidence breakdown.',
-    tech: ['Transformers', 'FastAPI', 'React', 'Recharts', 'Python'],
-    link: 'https://github.com/muavia-shakeel',
+      'Self-directed project: a small team of LLM agents — planner, web/document researcher, and writer — coordinating through a shared task queue to turn a research question into a structured summary. Built to explore agent handoff, tool-use loops, and failure recovery when one agent stalls or returns low-confidence output.',
+    tech: ['LangChain', 'Gemini', 'Python', 'Function Calling'],
   },
   {
     id: 6,
-    title: 'License Plate OCR',
+    title: 'Voice-to-Action Service Desk',
     description:
-      'Detects and reads vehicle number plates from images or live webcam feed. YOLOv8 localizes the plate region, EasyOCR extracts the text. Logs results with timestamps to a SQLite database and exposes a REST API for integrations.',
-    tech: ['YOLOv8', 'EasyOCR', 'OpenCV', 'SQLite', 'FastAPI'],
-    link: 'https://github.com/muavia-shakeel',
+      'Self-directed project: a voice-driven agent that transcribes a spoken support request, uses an LLM to classify intent and extract structured fields, then dispatches the matching backend action (e.g., log a ticket, check status) instead of just returning text. Built to explore the speech-to-intent-to-action pipeline end to end.',
+    tech: ['Whisper', 'Gemini', 'FastAPI', 'Python'],
   },
 ]
 
@@ -110,13 +107,13 @@ export const experience = [
   {
     id: 1,
     role: 'AI/ML Engineer',
-    company: 'Kohinoor Textile Mills',
-    period: '2023 – Present',
+    company: 'Kohinoor Textile Mills Limited Company',
+    period: '2025 – Present',
     type: 'work',
     bullets: [
       'Leading development of 5+ computer vision systems across production, logistics, and quality control',
       'Deployed real-time ANPR and monitoring systems processing 12+ camera feeds on GPU infrastructure',
-      'Built hybrid OCR engine handling 500+ documents daily with 96% accuracy',
+      'Built hybrid OCR engine handling 100+ CNICs daily with 96% accuracy',
       'Integrated AI decision modules with Oracle ERP, automating manual processes end-to-end',
     ],
   },
@@ -124,7 +121,7 @@ export const experience = [
     id: 2,
     role: 'MS Artificial Intelligence',
     company: 'FAST-NU',
-    period: '2024 – Present',
+    period: '2025 – Present',
     type: 'education',
     bullets: [
       'Graduate research in deep learning and intelligent document processing',
@@ -227,6 +224,11 @@ export const researchAreas = [
 export const publications = [
   {
     id: 1,
-    status: 'coming_soon',
+    title: 'Federated Learning with Dataset-Size-Weighted GradCAM Aggregation for Explainable Multi-Label Chest X-Ray Diagnosis',
+    authors: 'Muavia Shakeel, Muhammad Haseeb',
+    venue: 'ICAISF 2026',
+    abstract:
+      'A federated learning framework for explainable multi-label chest X-ray diagnosis on NIH ChestX-ray14, introducing a privacy-preserving, dataset-size-weighted GradCAM aggregation scheme (M* = Σ (n_k/N) M_k). Achieves AUC-ROC of 0.8235 — within 0.6% of centralized training — while the weighted aggregation yields higher explanation faithfulness than uniform or max-pool baselines. A multi-seed stress test across four non-IID heterogeneity levels reveals a previously unreported decoupling between classification performance (maximized near-IID) and explanation stability (maximized at moderate heterogeneity, α ≈ 0.3).',
+    tags: ['Federated Learning', 'GradCAM', 'Explainable AI', 'Medical Imaging', 'Non-IID'],
   },
 ]

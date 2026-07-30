@@ -35,16 +35,16 @@ function SkillCard({ category }) {
     >
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-9 h-9 bg-accent/8 border border-accent/15 flex items-center justify-center group-hover:bg-accent/12 transition-colors duration-200">
-          <Icon size={16} className="text-accent" />
+        <div className="w-9 h-9 bg-accent-ink/8 dark:bg-accent/8 border border-accent-ink/15 dark:border-accent/15 flex items-center justify-center group-hover:bg-accent-ink/12 dark:group-hover:bg-accent/12 transition-colors duration-200">
+          <Icon size={16} className="text-accent-ink dark:text-accent" />
         </div>
-        <h3 className="font-display font-bold text-white text-base leading-tight">
+        <h3 className="font-display font-bold text-slate-900 dark:text-white text-base leading-tight">
           {category.category}
         </h3>
       </div>
 
       {/* Note */}
-      <p className="text-slate-600 text-xs mb-4 leading-relaxed">
+      <p className="text-slate-500 dark:text-slate-600 text-xs mb-4 leading-relaxed">
         {category.note}
       </p>
 

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Eye, FileText, Brain, Layers, Database, Cpu, BookOpen, Clock } from 'lucide-react'
+import { Eye, FileText, Brain, Layers, Database, Cpu, BookOpen } from 'lucide-react'
 import { researchAreas, publications } from '../data/content'
 import SectionHeader from './SectionHeader'
 
@@ -31,16 +31,16 @@ function AreaCard({ area }) {
       variants={item}
       className="group flex flex-col gap-4 glass-card p-6"
     >
-      <div className="w-9 h-9 bg-accent/8 border border-accent/15 flex items-center justify-center group-hover:bg-accent/15 group-hover:border-accent/30 transition-all duration-200">
-        <Icon size={15} className="text-accent" />
+      <div className="w-9 h-9 bg-accent-ink/8 dark:bg-accent/8 border border-accent-ink/15 dark:border-accent/15 flex items-center justify-center group-hover:bg-accent-ink/15 dark:group-hover:bg-accent/15 group-hover:border-accent-ink/30 dark:group-hover:border-accent/30 transition-all duration-200">
+        <Icon size={15} className="text-accent-ink dark:text-accent" />
       </div>
-      <h3 className="font-display font-bold text-base text-white leading-tight group-hover:text-accent transition-colors duration-200">
+      <h3 className="font-display font-bold text-base text-slate-900 dark:text-white leading-tight group-hover:text-accent-ink dark:group-hover:text-accent transition-colors duration-200">
         {area.title}
       </h3>
-      <p className="text-slate-400 text-sm leading-relaxed flex-1">
+      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed flex-1">
         {area.description}
       </p>
-      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800">
+      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200 dark:border-slate-800">
         {area.tags.map((tag) => (
           <span key={tag} className="tech-label">{tag}</span>
         ))}
@@ -80,24 +80,41 @@ export default function Research() {
           title="Research Publications"
           subtitle="Academic papers and preprints."
         />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="glass-card p-10 flex flex-col items-center justify-center text-center gap-4"
-        >
-          <div className="w-12 h-12 bg-accent/6 border border-accent/15 flex items-center justify-center">
-            <BookOpen size={18} className="text-accent/60" />
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock size={12} className="text-accent/50" />
-            <span className="font-mono text-xs text-accent/60 tracking-[0.15em] uppercase">Coming Soon</span>
-          </div>
-          <p className="text-slate-500 text-sm max-w-md leading-relaxed">
-            Research work currently in progress. Publications will be listed here once submitted or accepted.
-          </p>
-        </motion.div>
+        <div className="flex flex-col gap-5">
+          {publications.map((pub) => (
+            <motion.div
+              key={pub.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="glass-card p-8 flex flex-col gap-4"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-accent-ink/8 dark:bg-accent/8 border border-accent-ink/15 dark:border-accent/15 flex items-center justify-center flex-shrink-0">
+                  <BookOpen size={16} className="text-accent-ink dark:text-accent" />
+                </div>
+                <div>
+                  <span className="font-mono text-[10px] text-accent-ink dark:text-accent tracking-[0.1em] uppercase">
+                    {pub.venue}
+                  </span>
+                  <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white leading-snug mt-1">
+                    {pub.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{pub.authors}</p>
+                </div>
+              </div>
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                {pub.abstract}
+              </p>
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200 dark:border-slate-800">
+                {pub.tags.map((tag) => (
+                  <span key={tag} className="tech-label">{tag}</span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
     </section>

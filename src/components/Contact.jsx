@@ -25,7 +25,7 @@ const socialLinks = [
 ]
 
 const inputClass =
-  'w-full glass-card px-4 py-3 text-sm text-white placeholder-slate-500 transition-all duration-300 focus:border-accent/40 focus:outline-none rounded-lg'
+  'w-full glass-card px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 transition-all duration-300 focus:border-accent-ink/40 dark:focus:border-accent/40 focus:outline-none rounded-lg'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
@@ -65,11 +65,11 @@ export default function Contact() {
       >
         {/* ── Left panel ─────────────────────── */}
         <div className="lg:col-span-2 flex flex-col gap-8">
-          <div className="border-l-2 border-accent/30 pl-6">
-            <h3 className="font-display font-semibold text-lg text-white mb-3">
+          <div className="border-l-2 border-accent-ink/30 dark:border-accent/30 pl-6">
+            <h3 className="font-display font-semibold text-lg text-slate-900 dark:text-white mb-3">
               Availability
             </h3>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
               Available for consulting, research collaborations, and contract work.
               Response time: &lt; 48 hours.
             </p>
@@ -77,7 +77,7 @@ export default function Contact() {
 
           {/* Social links */}
           <div className="flex flex-col gap-3">
-            <p className="text-xs text-accent font-medium mb-1">
+            <p className="text-xs text-accent-ink dark:text-accent font-medium mb-1">
               Connect Online
             </p>
             {socialLinks.map(({ label, handle, href, icon: Icon }) => (
@@ -86,12 +86,12 @@ export default function Contact() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="glass-card flex items-center gap-4 px-4 py-3 text-slate-300 transition-all duration-300 hover:border-accent/30"
+                className="glass-card flex items-center gap-4 px-4 py-3 text-slate-700 dark:text-slate-300 transition-all duration-300 hover:border-accent-ink/30 dark:hover:border-accent/30"
               >
-                <Icon size={16} className="flex-shrink-0 text-accent" />
+                <Icon size={16} className="flex-shrink-0 text-accent-ink dark:text-accent" />
                 <div className="min-w-0">
-                  <div className="text-sm font-medium leading-none mb-1 text-white">{label}</div>
-                  <div className="text-xs text-slate-400 truncate">{handle}</div>
+                  <div className="text-sm font-medium leading-none mb-1 text-slate-900 dark:text-white">{label}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 truncate">{handle}</div>
                 </div>
               </a>
             ))}
@@ -108,22 +108,22 @@ export default function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="glass-card p-10 flex flex-col items-center justify-center gap-5 text-center min-h-[380px] rounded-2xl border-2 border-accent/30"
+                className="glass-card p-10 flex flex-col items-center justify-center gap-5 text-center min-h-[380px] rounded-2xl border-2 border-accent-ink/30 dark:border-accent/30"
               >
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: 'spring', bounce: 0.4, delay: 0.1 }}
                 >
-                  <CheckCircle size={52} className="text-accent" />
+                  <CheckCircle size={52} className="text-accent-ink dark:text-accent" />
                 </motion.div>
-                <h3 className="font-display font-semibold text-2xl text-white">Message Sent!</h3>
-                <p className="text-slate-300 text-sm max-w-xs">
+                <h3 className="font-display font-semibold text-2xl text-slate-900 dark:text-white">Message Sent!</h3>
+                <p className="text-slate-700 dark:text-slate-300 text-sm max-w-xs">
                   Response time: &lt; 48 hours.
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="mt-1 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+                  className="mt-1 text-sm font-medium text-accent-ink dark:text-accent hover:opacity-80 transition-opacity"
                 >
                   Send Another →
                 </button>
@@ -139,7 +139,7 @@ export default function Contact() {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs text-accent font-medium">
+                    <label className="text-xs text-accent-ink dark:text-accent font-medium">
                       Name
                     </label>
                     <input
@@ -153,7 +153,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs text-accent font-medium">
+                    <label className="text-xs text-accent-ink dark:text-accent font-medium">
                       Email
                     </label>
                     <input
@@ -203,11 +203,11 @@ export default function Contact() {
                   disabled={status === 'sending'}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  className="mt-2 flex items-center justify-center gap-2 px-8 py-4 bg-accent disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium text-sm transition-all duration-300 rounded-xl hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20"
+                  className="mt-2 flex items-center justify-center gap-2 px-8 py-4 bg-accent disabled:opacity-50 disabled:cursor-not-allowed text-void font-medium text-sm transition-all duration-300 rounded-xl hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20"
                 >
                   {status === 'sending' ? (
                     <>
-                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span className="w-4 h-4 border-2 border-void/30 border-t-void rounded-full animate-spin" />
                       Sending...
                     </>
                   ) : (

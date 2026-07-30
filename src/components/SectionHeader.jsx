@@ -10,15 +10,15 @@ export default function SectionHeader({ eyebrow, title, subtitle }) {
       className="mb-12"
     >
       {eyebrow && (
-        <p className="font-mono text-xs text-accent tracking-[0.15em] uppercase mb-4">
+        <p className="font-mono text-xs text-accent-ink dark:text-accent tracking-[0.15em] uppercase mb-4">
           {eyebrow}
         </p>
       )}
-      <h2 className="font-display font-black text-4xl sm:text-5xl text-white leading-tight tracking-tight mb-4">
+      <h2 className="font-display font-black text-4xl sm:text-5xl text-slate-900 dark:text-white leading-tight tracking-tight mb-4">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-slate-400 text-base leading-relaxed max-w-2xl">
+        <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed max-w-2xl">
           {subtitle}
         </p>
       )}
