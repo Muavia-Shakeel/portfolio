@@ -42,7 +42,6 @@ export default function FeedbackForm() {
   return (
     <section id="feedback" className="py-28 px-6 lg:px-8 max-w-3xl mx-auto">
       <SectionHeader
-        eyebrow="// for clients & colleagues"
         title="Leave Feedback"
         subtitle="Worked with me on a project? A few lines on what it was like helps a lot — thank you."
       />
