@@ -234,4 +234,15 @@ export const publications = [
 ]
 
 // Populated manually after reviewing Formspree submissions from the feedback form (#feedback).
-export const testimonials = []
+export const testimonials = [
+  {
+    id: 1,
+    name: 'Anand Mishra',
+    role: 'Project Manager',
+    company: 'AK INFOTECH',
+    country: 'India',
+    quote:
+      'It was a pleasure working with Muavia Shakeel on this project. He demonstrated professionalism, good communication, and a collaborative approach throughout. The project was completed successfully, and I appreciate his dedication and timely contributions. I look forward to working together again in the future.',
+    photo: null,
+  },
+]
