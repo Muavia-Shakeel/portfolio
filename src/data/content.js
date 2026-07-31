@@ -232,3 +232,6 @@ export const publications = [
     tags: ['Federated Learning', 'GradCAM', 'Explainable AI', 'Medical Imaging', 'Non-IID'],
   },
 ]
+
+// Populated manually after reviewing Formspree submissions from the feedback form (#feedback).
+export const testimonials = []
