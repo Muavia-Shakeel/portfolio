@@ -15,11 +15,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('about')
-  const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains('dark'))
 
   const toggleTheme = () => {
-    const next = !isDark
-    setIsDark(next)
+    const next = !document.documentElement.classList.contains('dark')
     document.documentElement.classList.toggle('dark', next)
     localStorage.setItem('theme', next ? 'dark' : 'light')
   }
@@ -103,7 +101,8 @@ export default function Navbar() {
               className="p-2 rounded-full border border-slate-300 dark:border-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:border-accent-ink/50 dark:hover:border-accent/50 transition-colors"
               aria-label="Toggle theme"
             >
-              {isDark ? <Sun size={16} /> : <Moon size={16} />}
+              <Sun size={16} className="hidden dark:inline" />
+              <Moon size={16} className="inline dark:hidden" />
             </button>
 
             {/* Mobile button */}

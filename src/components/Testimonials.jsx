@@ -1,21 +1,18 @@
-import { motion } from 'framer-motion'
 import { Quote } from 'lucide-react'
 import { testimonials } from '../data/content'
 import SectionHeader from './SectionHeader'
+import Reveal from './Reveal'
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-}
-
-function TestimonialCard({ t }) {
+function TestimonialCard({ t, index }) {
   return (
-    <motion.div variants={item} className="glass-card p-6 flex flex-col gap-4">
+    <Reveal
+      as="div"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+      className="glass-card p-6 flex flex-col gap-4"
+    >
       <Quote size={18} className="text-accent-ink/50 dark:text-accent/50" />
       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed flex-1">
         "{t.quote}"
@@ -35,7 +32,7 @@ function TestimonialCard({ t }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </Reveal>
   )
 }
 
@@ -49,17 +46,11 @@ export default function Testimonials() {
         title="Feedback"
         subtitle="From clients and colleagues I've worked with directly."
       />
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '-60px' }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-      >
-        {testimonials.map((t) => (
-          <TestimonialCard key={t.id} t={t} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {testimonials.map((t, i) => (
+          <TestimonialCard key={t.id} t={t} index={i} />
         ))}
-      </motion.div>
+      </div>
     </section>
   )
 }

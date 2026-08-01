@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
+import Reveal from './Reveal'
 
 export default function SectionHeader({ eyebrow, title, subtitle }) {
   return (
-    <motion.div
+    <Reveal
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -22,6 +22,6 @@ export default function SectionHeader({ eyebrow, title, subtitle }) {
           {subtitle}
         </p>
       )}
-    </motion.div>
+    </Reveal>
   )
 }

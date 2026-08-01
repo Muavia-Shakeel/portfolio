@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Linkedin, Mail, MessageCircle, Send, CheckCircle } from 'lucide-react'
 import SectionHeader from './SectionHeader'
+import Reveal from './Reveal'
 
 const socialLinks = [
   {
@@ -60,7 +61,8 @@ export default function Contact() {
         subtitle="Open to AI/ML consulting, research collaborations, and industrial automation projects."
       />
 
-      <motion.div
+      <Reveal
+        as="div"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
@@ -133,7 +135,8 @@ export default function Contact() {
                 </button>
               </motion.div>
             ) : (
-              <motion.form
+              <Reveal
+                as="form"
                 key="form"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -221,11 +224,11 @@ export default function Contact() {
                     </>
                   )}
                 </motion.button>
-              </motion.form>
+              </Reveal>
             )}
           </AnimatePresence>
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   )
 }

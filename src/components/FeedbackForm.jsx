@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, CheckCircle, ImagePlus } from 'lucide-react'
 import SectionHeader from './SectionHeader'
+import Reveal from './Reveal'
 
 const inputClass =
   'w-full glass-card px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 transition-all duration-300 focus:border-accent-ink/40 dark:focus:border-accent/40 focus:outline-none rounded-lg'
@@ -65,7 +66,8 @@ export default function FeedbackForm() {
             </p>
           </motion.div>
         ) : (
-          <motion.form
+          <Reveal
+            as="form"
             key="form"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -135,7 +137,7 @@ export default function FeedbackForm() {
                 </>
               )}
             </motion.button>
-          </motion.form>
+          </Reveal>
         )}
       </AnimatePresence>
     </section>

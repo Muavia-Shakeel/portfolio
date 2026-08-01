@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
 import { Brain, Eye, Code2, Server, Database, FlaskConical, Globe, BarChart2, Cloud } from 'lucide-react'
 import { skills } from '../data/content'
 import SectionHeader from './SectionHeader'
+import Reveal from './Reveal'
 
 const iconMap = {
   brain: Brain,
@@ -15,22 +15,16 @@ const iconMap = {
   cloud: Cloud,
 }
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
-}
-
-function SkillCard({ category }) {
+function SkillCard({ category, index }) {
   const Icon = iconMap[category.icon] || Brain
 
   return (
-    <motion.div
-      variants={item}
+    <Reveal
+      as="div"
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
       className="group glass-card p-6"
     >
       {/* Header */}
@@ -56,7 +50,7 @@ function SkillCard({ category }) {
           </span>
         ))}
       </div>
-    </motion.div>
+    </Reveal>
   )
 }
 
@@ -73,17 +67,11 @@ export default function Skills() {
           subtitle="Tools and frameworks for building, training, and deploying intelligent systems at production scale."
         />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-        >
-          {skills.map((category) => (
-            <SkillCard key={category.category} category={category} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skills.map((category, i) => (
+            <SkillCard key={category.category} category={category} index={i} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

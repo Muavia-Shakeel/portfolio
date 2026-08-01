@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
 import { ArrowRight, FileDown, Mail } from 'lucide-react'
+import Reveal from './Reveal'
 
 const PROFILE_URL = '/profile.jpg'
 const RESUME_URL = '/resume.pdf'
@@ -26,30 +26,32 @@ export default function Hero() {
 
           {/* Text */}
           <div>
-            <motion.p {...fade(0)} className="font-mono text-xs text-accent-ink dark:text-accent tracking-[0.15em] uppercase mb-6">
+            <Reveal as="p" {...fade(0)} className="font-mono text-xs text-accent-ink dark:text-accent tracking-[0.15em] uppercase mb-6">
               Computer Vision · LLM Agents · Rawalpindi
-            </motion.p>
+            </Reveal>
 
-            <motion.h1 {...fade(0.07)} className="font-display font-black text-6xl sm:text-7xl lg:text-8xl text-slate-900 dark:text-white leading-[0.95] tracking-tight uppercase">
-              Muavia
-            </motion.h1>
-            <motion.h1 {...fade(0.12)} className="font-display font-black text-6xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight uppercase mb-8">
-              Shakeel
-            </motion.h1>
-            <motion.h2 {...fade(0.16)} className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight uppercase text-outline mb-8">
+            <h1 className="font-display font-black text-6xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight uppercase">
+              <Reveal as="span" {...fade(0.07)} className="block text-slate-900 dark:text-white">
+                Muavia
+              </Reveal>
+              <Reveal as="span" {...fade(0.12)} className="block mb-8">
+                Shakeel
+              </Reveal>
+            </h1>
+            <Reveal as="h2" {...fade(0.16)} className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight uppercase text-outline mb-8">
               AI/ML Engineer
-            </motion.h2>
+            </Reveal>
 
-            <motion.p {...fade(0.22)} className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10 max-w-xl">
+            <Reveal as="p" {...fade(0.22)} className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-10 max-w-xl">
               I build agentic LLM systems and computer-vision pipelines that run in
               production, not proofs of concept. My WhatsApp ERP bot replaced 1,500 lines
               of regex with a 13-tool Gemini function-calling loop; my vision pipelines
               process 100+ CNICs a day at 96% accuracy on live GPU infrastructure.
               Whichever the problem calls for, I wire it into real ERP systems and
               real infrastructure.
-            </motion.p>
+            </Reveal>
 
-            <motion.div {...fade(0.28)} className="flex flex-wrap gap-3 mb-12">
+            <Reveal as="div" {...fade(0.28)} className="flex flex-wrap gap-3 mb-12">
               <button
                 onClick={() => scrollTo('#projects')}
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-accent text-void font-display font-bold text-sm tracking-wide hover:bg-accent-dark transition-colors duration-150"
@@ -73,10 +75,10 @@ export default function Hero() {
                 <Mail size={14} />
                 Get in touch
               </button>
-            </motion.div>
+            </Reveal>
 
             {/* Stats row */}
-            <motion.div {...fade(0.35)} className="flex items-center gap-10 pt-8 border-t border-slate-200 dark:border-slate-800">
+            <Reveal as="div" {...fade(0.35)} className="flex items-center gap-10 pt-8 border-t border-slate-200 dark:border-slate-800">
               {[
                 { n: '5+', label: 'Production systems' },
                 { n: '2+', label: 'Years experience' },
@@ -87,11 +89,12 @@ export default function Hero() {
                   <div className="font-body text-xs text-slate-500 dark:text-slate-600">{label}</div>
                 </div>
               ))}
-            </motion.div>
+            </Reveal>
           </div>
 
           {/* Photo */}
-          <motion.div
+          <Reveal
+            as="div"
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -117,7 +120,7 @@ export default function Hero() {
                 muavia.shakeel · ai/ml
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
         </div>
       </div>

@@ -2,12 +2,14 @@ import { motion } from 'framer-motion'
 import { Briefcase, GraduationCap, CheckCircle2 } from 'lucide-react'
 import { experience } from '../data/content'
 import SectionHeader from './SectionHeader'
+import Reveal from './Reveal'
 
 function TimelineEntry({ entry, index, isLast }) {
   const isEducation = entry.type === 'education'
 
   return (
-    <motion.div
+    <Reveal
+      as="div"
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-40px' }}
@@ -73,7 +75,7 @@ function TimelineEntry({ entry, index, isLast }) {
           </ul>
         </motion.div>
       </div>
-    </motion.div>
+    </Reveal>
   )
 }
 

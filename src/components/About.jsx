@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
 import { MapPin, GraduationCap, Briefcase, Cpu, Heart } from 'lucide-react'
 import SectionHeader from './SectionHeader'
+import Reveal from './Reveal'
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 18 },
@@ -28,7 +28,7 @@ export default function About() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
 
         {/* Bio — wider column */}
-        <motion.div {...fade(0)} className="lg:col-span-3 space-y-5">
+        <Reveal as="div" {...fade(0)} className="lg:col-span-3 space-y-5">
           <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed">
             I'm an AI/ML Engineer in Rawalpindi, Pakistan, working at Kohinoor Textile Mills —
             one of the country's largest textile manufacturers. I got there by accident: an
@@ -52,10 +52,10 @@ export default function About() {
             Outside work: side projects that mostly don't ship, an open-source PR here and there,
             and a reading list on cybersecurity and systems design that's longer than I'll admit.
           </p>
-        </motion.div>
+        </Reveal>
 
         {/* Facts card */}
-        <motion.div {...fade(0.1)} className="lg:col-span-2">
+        <Reveal as="div" {...fade(0.1)} className="lg:col-span-2">
           <div className="glass-card p-6 space-y-0 divide-y divide-slate-200 dark:divide-slate-800/60">
             {facts.map(({ Icon, label, value }, i) => (
               <div key={label} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
@@ -71,7 +71,7 @@ export default function About() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </Reveal>
 
       </div>
     </section>

@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
 import { Eye, FileText, Brain, Layers, Database, Cpu, BookOpen } from 'lucide-react'
 import { researchAreas, publications } from '../data/content'
 import SectionHeader from './SectionHeader'
+import Reveal from './Reveal'
 
 const iconMap = {
   eye: Eye,
@@ -13,22 +13,16 @@ const iconMap = {
   rl: Brain,
 }
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-}
-
-function AreaCard({ area }) {
+function AreaCard({ area, index }) {
   const Icon = iconMap[area.icon] || Brain
 
   return (
-    <motion.div
-      variants={item}
+    <Reveal
+      as="div"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
       className="group flex flex-col gap-4 glass-card p-6"
     >
       <div className="w-9 h-9 bg-accent-ink/8 dark:bg-accent/8 border border-accent-ink/15 dark:border-accent/15 flex items-center justify-center group-hover:bg-accent-ink/15 dark:group-hover:bg-accent/15 group-hover:border-accent-ink/30 dark:group-hover:border-accent/30 transition-all duration-200">
@@ -45,7 +39,7 @@ function AreaCard({ area }) {
           <span key={tag} className="tech-label">{tag}</span>
         ))}
       </div>
-    </motion.div>
+    </Reveal>
   )
 }
 
@@ -60,17 +54,11 @@ export default function Research() {
           title="Research Areas"
           subtitle="Active areas of investigation — computer vision, generative AI, explainability, and beyond."
         />
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-        >
-          {researchAreas.map((area) => (
-            <AreaCard key={area.id} area={area} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {researchAreas.map((area, i) => (
+            <AreaCard key={area.id} area={area} index={i} />
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Publications */}
@@ -82,7 +70,8 @@ export default function Research() {
         />
         <div className="flex flex-col gap-5">
           {publications.map((pub) => (
-            <motion.div
+            <Reveal
+              as="div"
               key={pub.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +101,7 @@ export default function Research() {
                   <span key={tag} className="tech-label">{tag}</span>
                 ))}
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -120,4 +109,3 @@ export default function Research() {
     </section>
   )
 }
-

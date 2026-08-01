@@ -1,23 +1,17 @@
-import { motion } from 'framer-motion'
 import { projects } from '../data/content'
 import SectionHeader from './SectionHeader'
+import Reveal from './Reveal'
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-}
-
-function ProjectCard({ project }) {
+function ProjectCard({ project, index }) {
   const num = String(project.id).padStart(2, '0')
 
   return (
-    <motion.div
-      variants={item}
+    <Reveal
+      as="div"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
       className="group flex flex-col gap-4 glass-card p-6"
     >
       {/* Top row */}
@@ -41,7 +35,7 @@ function ProjectCard({ project }) {
           <span key={t} className="tech-label">{t}</span>
         ))}
       </div>
-    </motion.div>
+    </Reveal>
   )
 }
 
@@ -54,17 +48,11 @@ export default function Projects() {
         subtitle="Production systems and research prototypes built at the intersection of computer vision, deep learning, and industrial automation."
       />
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '-80px' }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-      >
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {projects.map((project, i) => (
+          <ProjectCard key={project.id} project={project} index={i} />
         ))}
-      </motion.div>
+      </div>
     </section>
   )
 }
