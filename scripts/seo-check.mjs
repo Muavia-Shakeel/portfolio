@@ -29,12 +29,16 @@ for (const path of all) {
   const canonical = attr(tag('link', 'rel', 'canonical'), 'href')
   if (canonical !== (path === '/' ? SITE : SITE + path)) err(`canonical is ${canonical}`)
 
-  for (const p of ['og:title', 'og:description', 'og:url', 'og:image']) {
-    if (!tag('meta', 'property', p)) err(`missing ${p}`)
+  const content = (kind, key) => attr(tag('meta', kind, key), 'content')
+  const expect = { 'og:title': title, 'og:description': desc, 'og:url': canonical }
+  for (const [k, v] of Object.entries(expect)) if (!v || content('property', k) !== v) err(`${k} missing or != page value`)
+  for (const [k, v] of [['twitter:title', title], ['twitter:description', desc]]) {
+    if (!v || content('name', k) !== v) err(`${k} missing or != page value`)
   }
-  for (const n of ['twitter:card', 'twitter:title', 'twitter:image']) {
-    if (!tag('meta', 'name', n)) err(`missing ${n}`)
+  for (const [kind, k] of [['property', 'og:image'], ['name', 'twitter:image']]) {
+    if (content(kind, k) !== `${SITE}/og-image.jpg`) err(`${k} is ${content(kind, k)}`)
   }
+  if (content('name', 'twitter:card') !== 'summary_large_image') err('twitter:card must be summary_large_image')
 
   const levels = [...html.matchAll(/<h([1-6])[\s>]/g)].map((m) => +m[1])
   if (levels.filter((l) => l === 1).length !== 1) err(`expected 1 <h1>, found ${levels.filter((l) => l === 1).length}`)

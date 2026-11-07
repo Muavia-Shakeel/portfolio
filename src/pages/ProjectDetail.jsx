@@ -8,7 +8,16 @@ const h2 = 'font-display font-bold text-xl text-slate-900 dark:text-white mt-12 
 
 export default function ProjectDetail() {
   const project = getProject(useParams().slug)
-  if (!project) return null // unknown slugs are never prerendered; the client router shows an empty page
+  if (!project)
+    return (
+      <section className="pt-36 pb-28 px-6 lg:px-8 max-w-3xl mx-auto min-h-[60vh]">
+        <Seo title="Project not found | Muavia Shakeel" description="This project page does not exist." path="/projects" noindex />
+        <h1 className="font-display font-black text-4xl text-slate-900 dark:text-white mb-4">Project not found</h1>
+        <Link to="/projects" className="font-display font-bold text-sm text-accent-ink dark:text-accent hover:underline">
+          Back to all projects
+        </Link>
+      </section>
+    )
 
   return (
     <article className="pt-36 pb-28 px-6 lg:px-8 max-w-3xl mx-auto">
