@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Eye, FileText, Brain, Layers, Database, Cpu, BookOpen } from 'lucide-react'
 import { researchAreas, publications } from '../data/content'
 import SectionHeader from './SectionHeader'
@@ -57,9 +57,11 @@ export default function Research() {
       <div className="mb-24">
         <SectionHeader
           eyebrow="// research"
-          title="Research Areas"
+          title="Research"
+          as="h1"
           subtitle="Active areas of investigation — computer vision, generative AI, explainability, and beyond."
         />
+        <h2 className="sr-only">Research areas</h2>
         <motion.div
           variants={container}
           initial="hidden"
@@ -84,6 +86,7 @@ export default function Research() {
           {publications.map((pub) => (
             <motion.div
               key={pub.id}
+              id={pub.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}

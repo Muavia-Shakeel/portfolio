@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Quote } from 'lucide-react'
 import { testimonials } from '../data/content'
 import SectionHeader from './SectionHeader'
@@ -22,7 +22,7 @@ function TestimonialCard({ t }) {
       </p>
       <div className="flex items-center gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
         {t.photo ? (
-          <img src={t.photo} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+          <img src={t.photo} alt={`Photo of ${t.name}`} width="40" height="40" loading="lazy" decoding="async" className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
         ) : (
           <div className="w-10 h-10 rounded-full bg-accent-ink/10 dark:bg-accent/10 flex items-center justify-center flex-shrink-0 font-display font-bold text-sm text-accent-ink dark:text-accent">
             {t.name.charAt(0)}

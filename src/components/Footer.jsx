@@ -1,3 +1,12 @@
+import { Link } from 'react-router-dom'
+import { GITHUB, LINKEDIN } from '../seo'
+
+const links = [
+  { label: 'About', to: '/about' },
+  { label: 'Projects', to: '/projects' },
+  { label: 'Research', to: '/research' },
+]
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -7,14 +16,19 @@ export default function Footer() {
         <p className="text-slate-500 dark:text-slate-400 text-xs">
           © {year} Muavia Shakeel. All rights reserved.
         </p>
-        <p className="text-xs text-slate-500 dark:text-slate-400">
-          Built with{' '}
-          <span className="text-accent-ink dark:text-accent">React</span>
-          {' '}+{' '}
-          <span className="text-accent-ink dark:text-accent">Vite</span>
-          {' '}+{' '}
-          <span className="text-accent-ink dark:text-accent">Tailwind</span>
-        </p>
+        <nav aria-label="Footer" className="flex items-center gap-5 text-xs text-slate-500 dark:text-slate-400">
+          {links.map((l) => (
+            <Link key={l.to} to={l.to} className="hover:text-accent-ink dark:hover:text-accent transition-colors">
+              {l.label}
+            </Link>
+          ))}
+          <a href={GITHUB} rel="me noopener" className="hover:text-accent-ink dark:hover:text-accent transition-colors">
+            GitHub
+          </a>
+          <a href={LINKEDIN} rel="me noopener" className="hover:text-accent-ink dark:hover:text-accent transition-colors">
+            LinkedIn
+          </a>
+        </nav>
       </div>
     </footer>
   )

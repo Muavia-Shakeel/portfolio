@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Brain, Eye, Code2, Server, Database, FlaskConical, Globe, BarChart2, Cloud } from 'lucide-react'
 import { skills } from '../data/content'
 import SectionHeader from './SectionHeader'

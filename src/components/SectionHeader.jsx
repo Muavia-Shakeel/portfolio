@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 
-export default function SectionHeader({ eyebrow, title, subtitle }) {
+export default function SectionHeader({ eyebrow, title, subtitle, as: Tag = 'h2' }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 14 }}
@@ -14,9 +14,9 @@ export default function SectionHeader({ eyebrow, title, subtitle }) {
           {eyebrow}
         </p>
       )}
-      <h2 className="font-display font-black text-4xl sm:text-5xl text-slate-900 dark:text-white leading-tight tracking-tight mb-4">
+      <Tag className="font-display font-black text-4xl sm:text-5xl text-slate-900 dark:text-white leading-tight tracking-tight mb-4">
         {title}
-      </h2>
+      </Tag>
       {subtitle && (
         <p className="text-slate-500 dark:text-slate-400 text-base leading-relaxed max-w-2xl">
           {subtitle}

@@ -46,14 +46,19 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Epilogue', 'system-ui', 'sans-serif'],
-        body: ['Figtree', 'system-ui', 'sans-serif'],
-        mono: ['Fira Code', 'Courier New', 'monospace'],
+        display: ['Epilogue Variable', 'Epilogue', 'system-ui', 'sans-serif'],
+        body: ['Figtree Variable', 'Figtree', 'system-ui', 'sans-serif'],
+        mono: ['Fira Code Variable', 'Fira Code', 'Courier New', 'monospace'],
       },
       animation: {
         float: 'float 8s ease-in-out infinite',
+        'fade-up': 'fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both',
       },
       keyframes: {
+        fadeUp: {
+          from: { opacity: '0', transform: 'translateY(18px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-8px)' },
