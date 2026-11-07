@@ -1,51 +1,3 @@
-export const projects = [
-  {
-    id: 1,
-    title: 'KTML WhatsApp ERP Bot',
-    description:
-      'Production agentic AI assistant for a textile ERP. Staff send natural-language messages (English or Urdu) on WhatsApp — the bot creates, confirms, posts, and reports on yarn pre-bookings wired into Oracle DB. v2 replaced a 1,500-line regex state machine with a Gemini function-calling loop and 13 tools, cutting code ~60% while adding more capabilities. Security: HMAC-SHA256 webhook auth, RBAC for 3 roles, parameterized queries on all writes, SELECT-only analytics with DDL/DML blocklist, and rate limiting.',
-    tech: ['Python', 'Flask', 'Gemini', 'Oracle DB', 'Node.js', 'rapidfuzz', 'HMAC-SHA256'],
-    link: 'https://github.com/muavia-shakeel',
-  },
-  {
-    id: 2,
-    title: 'Visual-AI — Enterprise CV & Video Analytics',
-    description:
-      'Real-time GPU-accelerated video surveillance platform built on NVIDIA DeepStream 7.1. Ingests live RTSP feeds and runs parallel deep learning pipelines: people & vehicle counting via virtual tripwires, vehicle speed detection using 4-point perspective transform, ArcFace facial recognition against a FAISS employee index, and ANPR with consensus voting. Camera streams are managed dynamically from Oracle DB — added or removed without pipeline restart. Watchdog with exponential backoff handles frozen streams; email alerts on critical failures.',
-    tech: ['DeepStream 7.1', 'YOLOv8s', 'TensorRT FP16', 'FAISS', 'ArcFace', 'Oracle DB', 'GStreamer', 'Python'],
-    link: 'https://github.com/muavia-shakeel',
-  },
-  {
-    id: 3,
-    title: 'IDE-PASS SDK — AI ID Card Scanner',
-    description:
-      'End-to-end intelligent document processing pipeline for Pakistani identity documents (CNIC, Driving License, Passport). Captures cards via hardware SDK, classifies with a custom YOLOv8 model, and routes through a multi-engine OCR stack — Google Cloud Vision for accuracy, EasyOCR as fallback. Auto-detects document type, extracts structured fields, and handles bilingual text: Urdu names are transliterated to English via Groq LLM. Packaged as a distributable Windows .exe via PyInstaller; dual-process architecture (32-bit capture + 64-bit AI) communicates over REST.',
-    tech: ['YOLOv8', 'Google Cloud Vision', 'EasyOCR', 'Groq LLM', 'Flask', 'Oracle DB', 'PyInstaller', 'Docker'],
-    link: 'https://github.com/muavia-shakeel',
-  },
-  {
-    id: 4,
-    title: 'Enterprise RAG Knowledge Assistant',
-    description:
-      'Self-directed project: a retrieval-augmented chat assistant over a private document set, with per-document access control so users only retrieve chunks they are authorized to see. Dense retrieval over a FAISS index, LLM-generated answers grounded in retrieved passages with inline citations, and a role-based filter applied before retrieval rather than after generation.',
-    tech: ['LangChain', 'FAISS', 'Gemini', 'FastAPI', 'Python'],
-  },
-  {
-    id: 5,
-    title: 'Multi-Agent Research & Automation Workflow',
-    description:
-      'Self-directed project: a small team of LLM agents — planner, web/document researcher, and writer — coordinating through a shared task queue to turn a research question into a structured summary. Built to explore agent handoff, tool-use loops, and failure recovery when one agent stalls or returns low-confidence output.',
-    tech: ['LangChain', 'Gemini', 'Python', 'Function Calling'],
-  },
-  {
-    id: 6,
-    title: 'Voice-to-Action Service Desk',
-    description:
-      'Self-directed project: a voice-driven agent that transcribes a spoken support request, uses an LLM to classify intent and extract structured fields, then dispatches the matching backend action (e.g., log a ticket, check status) instead of just returning text. Built to explore the speech-to-intent-to-action pipeline end to end.',
-    tech: ['Whisper', 'Gemini', 'FastAPI', 'Python'],
-  },
-]
-
 export const skills = [
   {
     category: 'Deep Learning',
@@ -224,9 +176,13 @@ export const researchAreas = [
 export const publications = [
   {
     id: 1,
+    slug: 'federated-gradcam-chest-xray',
     title: 'Federated Learning with Dataset-Size-Weighted GradCAM Aggregation for Explainable Multi-Label Chest X-Ray Diagnosis',
     authors: 'Muavia Shakeel, Muhammad Haseeb',
     venue: 'ICAISF 2026',
+    // Fill in once the paper has a public page: they feed the ScholarlyArticle JSON-LD (url/sameAs) when set.
+    url: null, // e.g. IEEE Xplore link
+    doi: null,
     abstract:
       'A federated learning framework for explainable multi-label chest X-ray diagnosis on NIH ChestX-ray14, introducing a privacy-preserving, dataset-size-weighted GradCAM aggregation scheme (M* = Σ (n_k/N) M_k). Achieves AUC-ROC of 0.8235 — within 0.6% of centralized training — while the weighted aggregation yields higher explanation faithfulness than uniform or max-pool baselines. A multi-seed stress test across four non-IID heterogeneity levels reveals a previously unreported decoupling between classification performance (maximized near-IID) and explanation stability (maximized at moderate heterogeneity, α ≈ 0.3).',
     tags: ['Federated Learning', 'GradCAM', 'Explainable AI', 'Medical Imaging', 'Non-IID'],
@@ -246,3 +202,7 @@ export const testimonials = [
     photo: null,
   },
 ]
+
+// Blog stays noindex and out of the sitemap while this is empty (thin-content guard).
+export const posts = []
+// { slug, title, description, date: 'YYYY-MM-DD', body }

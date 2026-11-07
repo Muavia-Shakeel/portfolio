@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { MapPin, GraduationCap, Briefcase, Cpu, Heart } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 
@@ -17,12 +17,13 @@ const facts = [
   { Icon: Heart,          label: 'Interests',    value: 'AI research, backend systems, cybersecurity, continuous learning' },
 ]
 
-export default function About() {
+export default function About({ asH1 = false }) {
   return (
     <section id="about-me" className="py-28 px-6 lg:px-8 max-w-6xl mx-auto">
       <SectionHeader
         eyebrow="// about me"
         title="Who I Am"
+        as={asH1 ? 'h1' : 'h2'}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">

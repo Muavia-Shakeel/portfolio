@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m as motion, AnimatePresence } from 'framer-motion'
 import { Linkedin, Mail, MessageCircle, Send, CheckCircle } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 
@@ -7,7 +7,7 @@ const socialLinks = [
   {
     label: 'LinkedIn',
     handle: 'linkedin.com/in/muavia-shakeel',
-    href: 'https://linkedin.com/in/muavia-shakeel/0bb783203',
+    href: 'https://www.linkedin.com/in/muavia-shakeel',
     icon: Linkedin,
   },
   {
