@@ -4,7 +4,7 @@ export const SITE_NAME = 'Muavia Shakeel'
 export const OG_IMAGE = `${SITE}/og-image.jpg` // 1200x630
 export const OG_IMAGE_ALT = 'Muavia Shakeel, AI/ML Engineer: computer vision and LLM agents'
 
-export const LINKEDIN = 'https://linkedin.com/in/muavia-shakeel/0bb783203'
+export const LINKEDIN = 'https://www.linkedin.com/in/muavia-shakeel'
 export const GITHUB = 'https://github.com/muavia-shakeel'
 // TODO(owner): add the Google Scholar profile URL here; it is included in Person.sameAs when set.
 export const SCHOLAR = null

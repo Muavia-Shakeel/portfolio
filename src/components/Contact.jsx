@@ -7,7 +7,7 @@ const socialLinks = [
   {
     label: 'LinkedIn',
     handle: 'linkedin.com/in/muavia-shakeel',
-    href: 'https://linkedin.com/in/muavia-shakeel/0bb783203',
+    href: 'https://www.linkedin.com/in/muavia-shakeel',
     icon: Linkedin,
   },
   {
